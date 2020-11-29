@@ -2,7 +2,7 @@
  * @Author: ferried
  * @Email: harlancui@outlook.com
  * @Date: 2020-11-29 21:09:14
- * @LastEditTime: 2020-11-29 21:34:03
+ * @LastEditTime: 2020-11-29 22:01:38
  * @LastEditors: ferried
  * @Description: Basic description
  * @FilePath: /lottery-jiu/index.html
@@ -16,30 +16,23 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="lottery.css">
+	<style>
+		body {
+			background: url(img.jpg) no-repeat;
+			width: 100%;
+			height: 100%;
+			background-size:cover;
+		}
+	</style>
 	<title>九宫格抽奖</title>
 </head>
 
 <body>
 	<div id="lottery">
 		<table cellpadding="0" cellspacing="0" id="table">
-			<!-- <tr>
-				<td class="lottery-unit lottery-unit-1">1</td>
-				<td class="lottery-unit lottery-unit-2">2</td>
-				<td class="lottery-unit lottery-unit-3">3</td>
-			</tr>
-			<tr>
-				<td class="lottery-unit lottery-unit-4">4</td>
-				<td class="lottery-unit lottery-unit-5">5</td>
-				<td class="lottery-unit lottery-unit-6">6</td>
-			</tr>
-			<tr>
-				<td class="lottery-unit lottery-unit-7">7</td>
-				<td class="lottery-unit lottery-unit-8">8</td>
-				<td class="lottery-unit lottery-unit-9">9</td>
-			</tr> -->
 		</table>
 	</div>
-	<button id="begin">抽奖</button>
+	<button id="begin" style="width: 200px;" title="抽奖">抽奖</button>
 	<script type="text/javascript" src="./core.lib.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		(function ($) {
@@ -65,12 +58,13 @@
 			document.getElementById("table").innerHTML = element;
 			$.loadScript("plug.lottery.js", function () {
 				var lottery = new Lottery({
-					loop: 5,
-					speed: 90
+					loop: 1,
+					speed: 100
 				});
 				g("begin").onclick = function () {
-					var n = $.randomInt(7);
-					lottery.run(n + 1, function () {
+					var n = $.randomInt(9);
+					n += 1;
+					lottery.run(n, function () {
 						alert("恭喜您中了" + ward[n] + "！")
 					});
 				}
